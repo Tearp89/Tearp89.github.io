@@ -1,76 +1,309 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round");
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.cs");
+
+h3, h4 {
+    margin: 0;
+}
+/*
+.container{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    font-family: "Varela Round", sans-serif;
+    line-height: 1.5em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.item {
+    --color: #eb904b;
+    width: 185px;
+    background-color: var(--color);
+    border-radius: 10px;
+    padding: 10px 5px;
+    box-shadow: 
+    #3c40434d 0px 1px 2px 0px
+    #3c404326 0px 1px 3px 1px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 2;
+    height: 80%;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: transparent
+    transparent transparent var(--color);
+    border-width: 40px 40px 40px 40px;
+    filter: drop-shadow(5px 0 4px #00000094);
+    transition: filter .5s;
+}
+
+.item:nth-child(2) {
+    --color: #813085;
+
+}
+
+.item:nth-child(3){
+    --color: #119630;
+}
+
+.layer {
+    background-color: #f2f2f2;
+    border: 1px solid #fff;
+    border-radius: inherit;
+    padding: 20px;
+    box-shadow: 
+    #00000012 0px 1px 2px,
+    #00000012 0px 2px 4px,
+    #00000012 0px 4px 8px,
+    #00000012 0px 8px 16px,
+    #00000012 0px 16px 32px,
+    #00000012 0px 32px 64px;
+    position: relative;
+    left: 10px;
+    transition: left;
+
+}
+
+h3 {
+    font-weight: 700;
+    text-align: center;
+    color: var(--color);
+
+}
+
+h4 {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 10px;
+
+}
+
+p {
+    color: #555;
+}
+
+span {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background-color: var(--color);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    box-shadow: 
+    #00000012 0px 1px 2px,
+    #00000012 0px 2px 4px,
+    #00000012 0px 4px 8px,
+    #00000012 0px 8px 16px,
+    #00000012 0px 16px 32px,
+    #00000012 0px 32px 64px;
+    font-size: 14px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.item.item:hover:after{
+    filter: drop-shadow(5px 0 4px 
+    #0000001a);
+}
+
+.item:hover .layer {
+    transform: translate(40px);
+    transition: transform 0.5s ease-in-out;
+} */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
   
-  body {
-    height: 200vh; /* Aumenta la altura de la página para permitir desplazamiento */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+  
+body {
+    height: 350vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    background-color: #3B4049;
+    background-color: #6082B6;
     flex-direction: column;
-  }
+    background-size: 100% 100%;
+    background-image: url('resources/media/images/georgiana.jpg');
+    background-size: cover; /* La imagen ocupa todo el viewport */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repite la imagen */
+    background-attachment: fixed; /* Fija la imagen al viewport */
+}
   
-  .wrapper {
-    height: 200px;
-    width: 300px;
+.wrapper {
+    height: 400px;
+    width: 700px;
     background-color: #3760C9;
     position: relative;
     display: flex;
     justify-content: center;
     z-index: 0;
-    margin-top: 50px;
-    transition: transform 0.5s ease-out;
-  }
-  
-  .lid {
+    transition: transform 1s ease-out; /* Transición suave */
+}
+
+/* Solapas */
+.lid {
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    border-right: 150px solid transparent;
-    border-bottom: 100px solid transparent;
-    border-left: 150px solid transparent;
+    border-right: 350px solid transparent;
+    border-bottom: 200px solid transparent;
+    border-left: 350px solid transparent;
     transform-origin: top;
-    transition: transform 0.5s ease-out;
-  }
-  
-  /* Lid when closed */
-  .lid.one {
-    border-top: 100px solid #658ced;
-    transform: rotateX(0deg);
+    transition: transform 0.5s ease-out; /* Transición suave para abrir las solapas */
+}
+
+/* Solapa superior */
+.lid.one {
+    border-top: 200px solid #658ced;
+    transform: rotateX(0deg); /* Completamente cerrada */
     z-index: 3;
-  }
-  
-  /* Lid when opened */
-  .lid.two {
-    border-top: 100px solid #3760C9;
-    transform: rotateX(0deg);
+}
+
+/* Solapa inferior */
+.lid.two {
+    border-top: 200px solid #3760C9;
+    transform: rotateX(0deg); /* Completamente cerrada */
     z-index: 1;
-  }
-  
-  .envelope {
+}
+
+/* Contenido */
+.content {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    transform: translateY(20px); /* Comienza más abajo */
+}
+
+/* Mostrar contenido */
+.content.visible {
+    opacity: 1;
+    transform: translateY(0); /* Regresa a su posición */
+}
+
+/* Envelope container */
+.envelope {
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    border-top: 100px solid transparent;
-    border-right: 150px solid #C4DFF0;
-    border-bottom: 100px solid #C4DFF0;
-    border-left: 150px solid #a4d4f2;
+    border-top: 200px solid transparent;
+    border-right: 350px solid #C4DFF0;
+    border-bottom: 200px solid #C4DFF0;
+    border-left: 350px solid #a4d4f2;
     z-index: 3;
-  }
-  
-  /* Contenido adicional */
-  .content {
+}
+
+
+/* Cuando el sobre se ha desplazado hacia abajo, el contenido aparece */
+.wrapper.open .content {
+    opacity: 1;
+    transform: translateY(0); /* El contenido se mueve hacia su posición original */
+}
+
+.quote {
     text-align: center;
+    margin: 30px;
+}
+
+footer {
+    text-align: right;
+    margin: 30px;
+}
+
+.first-text {
+    position: absolute; /* Fuera del flujo del diseño */
+    top: 50%; /* Centra verticalmente respecto al contenedor */
+    left: 50%; /* Centra horizontalmente respecto al contenedor */
+    transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+    max-width: 100%; /* Escala al ancho del viewport */
+    max-height: 100%; /* Escala al alto del contenedor */
+    z-index: 1; /* Asegura que se posicione detrás del sobre */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
     color: whitesmoke;
-    margin-top: 30px;
-  }
-  
-  
+}
+
+.background-container {
+    position: relative; /* Permite posicionar elementos dentro */
+    width: 100vw; /* Ocupa todo el ancho del viewport */
+    height: 100vh; /* Ocupa todo el alto del viewport */
+    overflow: hidden;
+    background: 
+    linear-gradient(to bottom, rgba(95,149,170,1), rgba(255,255,255,0)50%, rgba(255,255,255,0)50%, rgba(95,149,170,1)),
+    url('resources/media/images/background2.jpeg') center/cover no-repeat;
+}
+
+.background-container img {
+    width: 100vw; /* Ajusta el ancho al viewport */
+    height: 100vh; /* Ajusta el alto al viewport */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    
+}
+
+#text-overlay {
+    position: absolute; /* Posiciona el texto encima */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el texto al centro exacto */
+    color: white; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    font-family: Arial, sans-serif; /* Fuente */
+    font-size: 2rem; /* Tamaño del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejor visibilidad */
+}
+#animation-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Altura específica para el contenedor */
+    overflow: hidden; /* Asegura que nada sobresalga */
+    background-color: black; /* Fondo negro específico */
+}
+
+.quote-container {
+    background-color: rgba(167, 199, 231, 0.5); /* Fondo oscuro del contenedor */
+    color: #e2e8f0; /* Color claro para el texto */
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.item:hover:after{
+    filter: drop-shadow(5px 0 4px
+    #0000001a); 
+}
+
+.item:hover .layer {
+    left: 50px;
+}
+
+
