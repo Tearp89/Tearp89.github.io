@@ -18,7 +18,7 @@ html, body {
 }
   
 body {
-    height: 350vh;
+    height: 660vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,5 +187,298 @@ footer {
 .item:hover .layer {
     left: 50px;
 }
+
+/* Contenedor general que utiliza Flexbox */
+.flex-container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px; /* Espacio entre los contenedores */
+    padding: 20px;
+    background-color: transparent;
+}
+
+/* Estilos del contenedor individual */
+.responsive-container {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(50% - 20px); /* Ocupa el 50% del ancho menos el espacio */
+    /*transition: transform 0.3s ease-in-out;*/
+    position: relative;
+    margin: 20px auto;
+    /*background-image: url('resources/media/images/containerBackground.jpg') ; 
+    background-size: cover;*/
+}
+
+.responsive-container::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    background-color: transparent; /* Fondo transparente */
+    display: block;
+}
+
+.responsive-container::before {
+    background: linear-gradient(to bottom, #FFD700, #FFAA00);
+    clip-path: polygon(
+        10% 100%, 25% 60%, 37.5% 100%, 50% 40%, 62.5% 100%, 
+        75% 60%, 90% 100%, 100% 100%, 0% 100%
+    ); /* Triángulos más detallados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos internos del contenedor */
+.container-title {
+    font-size: 6vw;
+    font-size: 32px; /* Límite máximo */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.container-description {
+    font-size: 4vw;
+    font-size: 18px; /* Límite máximo */
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.container-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 4vw;
+    font-size: 16px; /* Límite máximo */
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.container-button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .responsive-container {
+        flex: 1 1 100%; /* Los contenedores ocupan toda la fila */
+    }
+
+    .container-title {
+        font-size: 5vw;
+    }
+
+    .container-description {
+        font-size: 3.5vw;
+    }
+
+    .container-button {
+        padding: 8px 16px;
+        font-size: 3.5vw;
+    }
+}
+
+.countdown-container {
+    position: relative;
+    width: 90%;
+    max-height: 200px;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 15px;
+    background: url('resources/media/images/background.jpeg') no-repeat center/cover; /* Fondo con imagen */
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* Permitir que el contenido se muestre */
+}
+
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Capa oscura sobre la imagen */
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.countdown-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.date-highlight {
+    font-size: 4rem; /* Tamaño grande para la fecha */
+    font-weight: bold;
+    color: #ffd700; /* Color dorado para resaltar */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.date-subtext {
+    font-size: 1.2rem; /* Texto más pequeño para partes remarcadas */
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.countdown-timer {
+    font-size: 2rem; /* Tamaño de la cuenta regresiva */
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .date-highlight {
+        font-size: 3rem;
+    }
+    .countdown-timer {
+        font-size: 1.5rem;
+    }
+}
+
+/* galeria de imágenes*/
+
+:root{
+    --index: calc(1vw + 1vh);
+    --transition: cubic-bezier(.1, .7, 0, 1);
+}
+
+.wrapper-gallery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.items{
+    display: flex;
+    gap: 0.4rem;
+    perspective: calc(var(--index) * 35);
+}
+
+.item{
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale(1) brightness(.5);
+    transition: transform 1.25s var(--transition),
+                filter 3s var(--transition),
+                width 1.25s var(--transition);
+        will-change: transform, filter, rotateY, width;
+}
+
+.item::before, .item::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    right: calc(var(--index) * -1);
+
+}
+
+.item::after{
+    left: calc(var(--index) * -1);
+}
+
+.items .item:hover{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+.items .item:hover + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5))
+    rotateY(35deg);
+    z-index: -1;
+}
+
+.items .item:hover + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6))
+    rotateY(40deg);
+    z-index: -2;
+}
+
+.items .item:hover + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5))
+    rotateY(30deg);
+    z-index: -3;
+}
+
+.items .item:hover + * + * + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) 
+    rotateY(15deg);
+    z-index: -4;
+}
+
+.items .item:has(+ :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5))
+    rotateY(-35deg);
+}
+
+.item .item:has(+ * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6))
+    rotateY(-40deg);
+}
+
+.items .item:has(+ * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5))
+    rotateY(-30deg);
+}
+
+.items .item:has(+ * + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6))
+    rotateY(-15deg);
+}
+
+.items .item:active, .items .item:focus {
+    width: 28vw;
+    filter: inherit;
+    z-index: 100;
+    transform: translateZ(calc(var(--index) * 10));
+    margin: 0 .45vw;
+}
+
+
+
+
+
+
+
+
+
 
 

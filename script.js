@@ -140,3 +140,41 @@ let chars, particles, canvas, ctx, w, h, current;
         ctx.fill();
     }
 
+
+    const targetDate = new Date("2025-03-01T14:00:00").getTime(); // Fecha objetivo
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = targetDate - now;
+
+    if (timeLeft > 0) {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        document.getElementById("countdown").textContent = "¡El evento ha comenzado!";
+    }
+}
+
+// Actualiza cada segundo
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+const music = document.getElementById("background-music");
+    
+      function toggleMusic() {
+        if (music.paused) {
+          music.play();
+        } else {
+          music.pause();
+        }
+      }
+
+      
+
+
+
