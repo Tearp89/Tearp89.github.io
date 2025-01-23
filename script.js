@@ -77,7 +77,7 @@ let chars, particles, canvas, ctx, w, h, current;
     }
 
     let img = new Image();
-        img.src = 'resources/media/images/darkerSky.jpg';
+        img.src = 'resources/media/images/clouds.jpg';
         img.onload = () => {
           render(0);
         }
@@ -174,7 +174,34 @@ const music = document.getElementById("background-music");
         }
       }
 
-      
+const lyricsContainer = document.getElementById('lyrics-container');
+const lyrics = [
+    { time: 0, text: "Bolso escolar en la mano, se va de casa temprano en la mañana" },
+    { time: 8, text: "Diciendo adiós con una sonrisa distraída" },
+    { time: 17, text: "La veo ir con una oleada de esa conocida tristeza" },
+    { time: 15, text: "¡Y la cuarta línea emocionante!" },
+    { time: 20, text: "Última línea de ejemplo, final de la letra." }
+];
 
+lyrics.forEach(line => {
+    const p = document.createElement('p');
+    p.textContent = line.text;
+    lyricsContainer.appendChild(p);
+});
 
+// Actualiza las letras en función del tiempo
+audio.addEventListener('timeupdate', () => {
+    const currentTime = audio.currentTime;
+    const lines = lyricsContainer.querySelectorAll('p');
+
+    lyrics.forEach((line, index) => {
+        if (currentTime >= line.time) {
+            // Resalta la línea actual
+            lines.forEach(line => line.classList.remove('highlight')); // Quita resaltar de todas
+            if (lines[index]) {
+                lines[index].classList.add('highlight');
+            }
+        }
+    });
+});
 
