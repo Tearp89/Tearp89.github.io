@@ -26,7 +26,7 @@ body {
     background-color: #6082B6;
     flex-direction: column;
     background-size: 100% 100%;
-    background-image: url('resources/media/images/georgiana.jpg');
+    background-image: url('resources/media/images/bodyBackground.jpeg');
     background-size: cover; /* La imagen ocupa todo el viewport */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* No repite la imagen */
@@ -128,7 +128,7 @@ footer {
     max-height: 100%; /* Escala al alto del contenedor */
     z-index: 1; /* Asegura que se posicione detrás del sobre */
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     color: whitesmoke;
 }
 
@@ -212,8 +212,9 @@ footer {
     /*transition: transform 0.3s ease-in-out;*/
     position: relative;
     margin: 20px auto;
-    /*background-image: url('resources/media/images/containerBackground.jpg') ; 
-    background-size: cover;*/
+    /*background-image: url('resources/media/images/water.jpg') ; */
+    background-color: rgba(75, 119, 190, 0.2);
+    background-size: cover;
 }
 
 .responsive-container::before {
@@ -229,12 +230,11 @@ footer {
 }
 
 .responsive-container::before {
-    background: linear-gradient(to bottom, #FFD700, #FFAA00);
-    clip-path: polygon(
-        10% 100%, 25% 60%, 37.5% 100%, 50% 40%, 62.5% 100%, 
-        75% 60%, 90% 100%, 100% 100%, 0% 100%
-    ); /* Triángulos más detallados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    content: '';
+    background-image: url('resources/media/images/crown.png');/* Triángulos más detallados */
+    background-size: cover;
+    height: 25%;
+    width: 15%;
 }
 
 
@@ -259,16 +259,28 @@ footer {
     padding: 10px 20px;
     font-size: 4vw;
     font-size: 16px; /* Límite máximo */
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 10px;
+    /**/
+    color: white;
+    background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde translúcido */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 .container-button:hover {
-    background-color: #0056b3;
+    background: rgba(255, 255, 255, 0.2); /* Aumenta la opacidad al pasar el cursor */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.container-button:active{
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Queries para pantallas pequeñas */
@@ -288,6 +300,7 @@ footer {
     .container-button {
         padding: 8px 16px;
         font-size: 3.5vw;
+        
     }
 }
 
@@ -471,6 +484,78 @@ footer {
     transform: translateZ(calc(var(--index) * 10));
     margin: 0 .45vw;
 }
+
+
+.btn-music{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-music:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Agranda el botón ligeramente al pasar el cursor */
+}
+
+.btn-music:active {
+    transform: scale(1); /* Elimina el efecto de hover al hacer clic */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .btn-music {
+        padding: 12px 16px; /* Ajusta el tamaño del botón */
+        font-size: 14px; /* Reduce el tamaño de fuente */
+        bottom: 15px; /* Ajusta el margen inferior */
+        right: 15px; /* Ajusta el margen derecho */
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-music {
+        padding: 10px 14px; /* Reduce más el tamaño del botón */
+        font-size: 12px; /* Fuente más pequeña para pantallas pequeñas */
+        bottom: 10px; /* Menor distancia desde el borde inferior */
+        right: 10px; /* Menor distancia desde el borde derecho */
+    }
+}
+
+/*botón traslucido*/
+.glassy-button {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde translúcido */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .glassy-button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Aumenta la opacidad al pasar el cursor */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+  
+  .glassy-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  }
 
 
 
