@@ -111,13 +111,15 @@ body {
     transform: translateY(20px); /* Comienza más abajo */
     border-radius: 15px;
     
+    
 
 }
 
 /* Mostrar contenido */
 .content.visible {
     opacity: 1;
-    transform: translateY(-50px); /* Regresa a su posición */
+    transform: translateY(-150px); /* Regresa a su posición */
+    z-index: 1;
 }
 
 /* Envelope container */
@@ -477,7 +479,7 @@ footer {
 .countdown-container {
     position: relative;
     width: 90%; /* Ocupa el 100% del ancho del padre */
-    height: 25vh; /* Ocupa el 100% de la altura de la ventana */
+    height: 30vh; /* Ocupa el 100% de la altura de la ventana */
     padding: 20px;
     border-radius: 15px; /* Elimina esquinas redondeadas si deseas que ocupe todo */
     background: rgba(75, 117, 190, 0.2);
