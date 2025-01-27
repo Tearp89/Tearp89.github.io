@@ -18,7 +18,7 @@ html, body {
 }
   
 body {
-    height: 660vh;
+    height: 900vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +31,12 @@ body {
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* No repite la imagen */
     background-attachment: fixed; /* Fija la imagen al viewport */
+}
+
+.p-letter{
+    margin: 30px; /* Margen alrededor del texto */
+    padding: 10px; /* Espaciado interno para que el texto no toque los bordes */
+    text-align: center; /* Centrado del texto */
 }
   
 .wrapper {
@@ -72,20 +78,46 @@ body {
     z-index: 1;
 }
 
+.letter {
+    background-color: beige;
+    opacity: 0;
+    transform: translateY(20px); /* Inicia un poco desplazado */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+  }
+  
+  .letter p {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    color: #3B4049;
+  }
+
+  .letter.show{
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+
 /* Contenido */
 .content {
     text-align: center;
     color: #333;
+    background-color: beige;
     margin-top: 50px;
+    align-content: top;
     opacity: 0; /* Inicialmente oculto */
     transition: opacity 1s ease-out, transform 1s ease-out;
     transform: translateY(20px); /* Comienza más abajo */
+    border-radius: 15px;
+    
+
 }
 
 /* Mostrar contenido */
 .content.visible {
     opacity: 1;
-    transform: translateY(0); /* Regresa a su posición */
+    transform: translateY(-50px); /* Regresa a su posición */
 }
 
 /* Envelope container */
@@ -163,7 +195,7 @@ footer {
 #animation-container {
     position: relative;
     width: 100%;
-    height: 400px; /* Altura específica para el contenedor */
+    height: 100vh; /* Altura específica para el contenedor */
     overflow: hidden; /* Asegura que nada sobresalga */
     background-color: black; /* Fondo negro específico */
 }
@@ -215,27 +247,31 @@ footer {
     /*background-image: url('resources/media/images/water.jpg') ; */
     background-color: rgba(75, 119, 190, 0.2);
     background-size: cover;
-}
-
-.responsive-container::before {
-    content: "";
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 40px;
-    background-color: transparent; /* Fondo transparente */
-    display: block;
+    padding-top: 50px;
 }
 
 .responsive-container::before {
     content: '';
-    background-image: url('resources/media/images/crown.png');/* Triángulos más detallados */
+    background-image: url('resources/media/images/crown.png'); /* Imagen de la corona */
+    background-size: cover; /* Asegúrate de que la imagen mantenga sus proporciones */
+    /*background-repeat: no-repeat; /* Evita que se repita */
+    position: absolute; /* Para posicionarlo en relación al contenedor */
+    top: -15%; /* Ajusta la corona para que quede fuera del contenedor */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centrar */
+    height: 70px; /* Altura fija para la corona */
+    width: 70px; /* Asegura proporción de la corona */
+    z-index: 1;
+}
+/*
+.responsive-container::before {
+    content: '';
+    background-image: url('resources/media/images/crown.png');
     background-size: cover;
     height: 25%;
     width: 15%;
-}
+} */
+
 
 
 /* Estilos internos del contenedor */
@@ -304,21 +340,155 @@ footer {
     }
 }
 
-.countdown-container {
-    position: relative;
+@media screen and (max-width: 768px) {
+    .responsive-container::before {
+      width: 40px; /* Tamaño más pequeño */
+      height: 40px;
+      top: -8%; /* Ajusta la posición en pantallas pequeñas */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .responsive-container::before {
+      width: 30px; /* Tamaño aún más pequeño */
+      height: 30px;
+      top: -6%;
+    }
+  }
+  
+
+.responsive-button-container{
     width: 90%;
-    max-height: 200px;
-    max-width: 500px;
+    max-width: 600px;
     padding: 20px;
     border-radius: 15px;
-    background: url('resources/media/images/background.jpeg') no-repeat center/cover; /* Fondo con imagen */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(50% - 20px); /* Ocupa el 50% del ancho menos el espacio */
+    /*transition: transform 0.3s ease-in-out;*/
+    position: relative;
+    margin: 20px auto;
+    /*background-image: url('resources/media/images/water.jpg') ; */
+    background-color: rgba(75, 119, 190, 0.2);
+    background-size: cover;
+    padding-top: 50px;
+
+}
+
+.responsive-button-container::before {
+    content: '';
+    background-image: url('resources/media/images/crown.png'); /* Imagen de la corona */
+    background-size: contain; /* Asegúrate de que la imagen mantenga sus proporciones */
+    background-repeat: no-repeat; /* Evita que se repita */
+    position: absolute; /* Para posicionarlo en relación al contenedor */
+    top: -15%; /* Ajusta la corona para que quede fuera del contenedor */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centrar */
+    height: 70px; /* Altura fija para la corona */
+    width: 70px; /* Asegura proporción de la corona */
+    z-index: 1;
+}
+
+
+/* Estilos internos del contenedor */
+.button-container-title {
+    font-size: 6vw;
+    font-size: 32px; /* Límite máximo */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.button-container-description {
+    font-size: 4vw;
+    font-size: 18px; /* Límite máximo */
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.button-container-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 4vw;
+    font-size: 16px; /* Límite máximo */
+    /**/
+    color: white;
+    background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde translúcido */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-container-button:hover {
+    background: rgba(255, 255, 255, 0.2); /* Aumenta la opacidad al pasar el cursor */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.button-container-button:active{
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .responsive-button-container {
+        flex: 1 1 100%; /* Los contenedores ocupan toda la fila */
+    }
+
+    .button-container-title {
+        font-size: 5vw;
+    }
+
+    .button-container-description {
+        font-size: 3.5vw;
+    }
+
+    .button-container-button {
+        padding: 8px 16px;
+        font-size: 3.5vw;
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .responsive-button-container::before {
+      width: 40px; /* Tamaño más pequeño */
+      height: 40px;
+      top: -8%; /* Ajusta la posición en pantallas pequeñas */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .responsive-button-container::before {
+      width: 30px; /* Tamaño aún más pequeño */
+      height: 30px;
+      top: -6%;
+    }
+  }
+  
+
+.countdown-container {
+    position: relative;
+    width: 90%; /* Ocupa el 100% del ancho del padre */
+    height: 25vh; /* Ocupa el 100% de la altura de la ventana */
+    padding: 20px;
+    border-radius: 15px; /* Elimina esquinas redondeadas si deseas que ocupe todo */
+    background: rgba(75, 117, 190, 0.2);
     color: white;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible; /* Permitir que el contenido se muestre */
+    overflow: hidden; /* Asegúrate de que el contenido no desborde */
+    
 }
 
 .countdown-overlay {
@@ -327,7 +497,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Capa oscura sobre la imagen */
+    /*background: rgba(0, 0, 0, 0.5); /* Capa oscura sobre la imagen */
     border-radius: 15px;
     z-index: 1;
 }
@@ -341,7 +511,7 @@ footer {
 .date-highlight {
     font-size: 4rem; /* Tamaño grande para la fecha */
     font-weight: bold;
-    color: #ffd700; /* Color dorado para resaltar */
+    color: #82addc; /* Color dorado para resaltar */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 10px;
 }
@@ -372,6 +542,14 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .countdown-container {
+        padding: 10px;
+        height: 25vh; /* Reduce la altura en pantallas pequeñas */
+    }
+}
+
 
 /* galeria de imágenes*/
 
@@ -573,7 +751,7 @@ footer {
     color: grey;
     font-weight: bold;
   }
-  
+
 
 
 

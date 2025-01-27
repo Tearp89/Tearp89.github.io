@@ -1,4 +1,4 @@
-window.addEventListener('scroll', function () {
+/*window.addEventListener('scroll', function () {
   let scrollAmount = window.scrollY;
 
   // Elementos
@@ -22,11 +22,44 @@ window.addEventListener('scroll', function () {
   } else {
       content.classList.remove('visible'); // Ocultar contenido
   }
-});
+});*/
+
+window.addEventListener('scroll', function () {
+    let scrollAmount = window.scrollY;
+  
+    // Elementos
+    let lidOne = document.querySelector('.lid.one');
+    let lidTwo = document.querySelector('.lid.two');
+    let wrapper = document.querySelector('.wrapper');
+    let content = document.querySelector('.content'); // Contenido adicional
+    let letter = document.querySelector('.letter'); // La carta
+  
+    // Rotación de las solapas
+    let lidRotation = Math.min(scrollAmount / 5, 90); // Rotación limitada a 90 grados
+    lidOne.style.transform = `rotateX(${lidRotation}deg)`; // Rotación superior
+    lidTwo.style.transform = `rotateX(${lidRotation + 90}deg)`; // Rotación inferior
+  
+    // Desplazamiento hacia arriba del sobre
+    let translateAmount = Math.max(-scrollAmount / 3, -200); // Límite para subir máximo 200px
+    wrapper.style.transform = `translateY(${translateAmount}px)`; // Se desplaza hacia arriba
+  
+    // Mostrar contenido cuando el sobre se ha abierto por completo
+    if (lidRotation >= 90) {
+      content.classList.add('visible'); // Mostrar contenido
+      letter.classList.add('show'); // Mostrar la carta
+    } else {
+      content.classList.remove('visible'); // Ocultar contenido
+      letter.classList.remove('show'); // Ocultar la carta
+    }
+  });
+  
+
+
+  
 
 let chars, particles, canvas, ctx, w, h, current;
-    let duration = 5000;
-    let str = ['MAII´S', 'FEST', '2025'];
+    let duration = 10000;
+    let str = ['MAI´S', 'FEST', '2025'];
 
     init();
     resize();
@@ -35,24 +68,26 @@ let chars, particles, canvas, ctx, w, h, current;
 
     function makeChar(c) {
         let tmp = document.createElement('canvas');
-        let size = tmp.width = tmp.height = w < 400 ? 200 : 300;
+        // Tamaño dinámico basado en el ancho del contenedor
+        let size = tmp.width = tmp.height = Math.min(w / 3, h / 2);
         let tmpCtx = tmp.getContext('2d');
-        tmpCtx.font = 'bold ' + size + 'px Arial';
+        tmpCtx.font = `bold ${size}px Arial`;
         tmpCtx.fillStyle = 'white';
-        tmpCtx.textBaseline = "middle";
-        tmpCtx.textAlign = "center";
+        tmpCtx.textBaseline = 'middle';
+        tmpCtx.textAlign = 'center';
         tmpCtx.fillText(c, size / 2, size / 2);
+        
         let char2 = tmpCtx.getImageData(0, 0, size, size);
         let char2particles = [];
-        for (var i = 0; char2particles.length < particles; i++) {
+        for (let i = 0; char2particles.length < particles; i++) {
             let x = size * Math.random();
             let y = size * Math.random();
             let offset = parseInt(y) * size * 4 + parseInt(x) * 4;
-            if (char2.data[offset])
-                char2particles.push([x - size / 2, y - size / 2]);
+            if (char2.data[offset]) char2particles.push([x - size / 2, y - size / 2]);
         }
         return char2particles;
     }
+    
 
     function init() {
         const container = document.getElementById('animation-container'); // Contenedor específico
@@ -104,16 +139,21 @@ let chars, particles, canvas, ctx, w, h, current;
         t -= i * 200;
         let id = i + chars.length * parseInt(t - t % duration);
         t = t % duration / duration;
-        let dx = (i + 1) * w / (1 + chars.length);
+    
+        // Ajusta la posición X dinámicamente para espaciar letras
+        let dx = (i + 1) * w / (chars.length + 1);
         dx += Math.min(0.33, t) * 100 * Math.sin(id);
-        let dy = h * 0.5;
+    
+        let dy = h * 0.5; // Centrado verticalmente
         dy += Math.sin(id * 4547.411) * h * 0.1;
+    
         if (t < 0.33) {
             rocket(dx, dy, id, t * 3);
         } else {
             explosion(pts, dx, dy, id, Math.min(1, Math.max(0, t - 0.33) * 2));
         }
     }
+    
 
     function rocket(x, y, id, t) {
         ctx.fillStyle = 'white';
