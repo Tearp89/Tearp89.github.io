@@ -58,7 +58,7 @@ window.addEventListener('scroll', function () {
   
 
 let chars, particles, canvas, ctx, w, h, current;
-    let duration = 10000;
+    let duration = 15000;
     let str = ['MAI´S', 'FEST', '2025'];
 
     init();
