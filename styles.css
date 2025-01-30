@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round");
 @import url("https://use.fontawesome.com/releases/v6.5.1/css/all.cs");
 
+@font-face {
+    font-family: GeneralFont;
+    src: url("resources/fonts/SalemoreLongest.ttf") format("truetype");
+}
+
 h3, h4 {
     margin: 0;
+    font-family: "GeneralFont", sans-serif;
+}
+
+p {
+    font-family: "GeneralFont", sans-serif;
 }
 
 
@@ -564,7 +574,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 50vh;
 }
 
 .items{
@@ -754,6 +764,38 @@ footer {
     font-weight: bold;
   }
 
+  .box-title {
+    text-transform: uppercase;
+    color: transparent;
+    font-family: "GeneralFont", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #c0c0c0, #8a8a8a, #f0f0f0, #5a5a5a, #c0c0c0);
+    background-size: 400% 400%;
+    animation: shine 3s linear infinite;
+    -webkit-background-clip: text;
+            background-clip: text;
+  }
+  .box {
+    text-transform: uppercase;
+    color: transparent;
+    font-family: "GeneralFont", sans-serif;
+    font-size: clamp(15px, 5vw, 30px);
+    font-weight: bold;
+    background: linear-gradient(135deg, #c0c0c0, #8a8a8a, #f0f0f0, #5a5a5a, #c0c0c0);
+    background-size: 400% 400%;
+    animation: shine 3s linear infinite;
+    -webkit-background-clip: text;
+            background-clip: text;
+  }
+  
+  @keyframes shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  
 
 
 
