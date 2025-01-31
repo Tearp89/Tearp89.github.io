@@ -343,12 +343,12 @@ footer {
     }
 
     .container-description {
-        font-size: 6vw;
+        font-size: 7vw;
     }
 
     .container-button {
         padding: 8px 16px;
-        font-size: 3.5vw;
+        font-size: 7vw;
         
     }
 }
@@ -456,16 +456,16 @@ footer {
     }
 
     .button-container-title {
-        font-size: 5vw;
+        font-size: 10vw;
     }
 
     .button-container-description {
-        font-size: 3.5vw;
+        font-size: 7vw;
     }
 
     .button-container-button {
         padding: 8px 16px;
-        font-size: 3.5vw;
+        font-size: 7vw;
         
     }
 }
