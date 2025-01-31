@@ -13,6 +13,7 @@ h3, h4 {
 
 p {
     font-family: "GeneralFont", sans-serif;
+    font-size: 20px;
 }
 
 
@@ -295,7 +296,7 @@ footer {
 }
 
 .container-description {
-    font-size: 4vw;
+    font-size: 10vw;
     font-size: 18px; /* Límite máximo */
     line-height: 1.5;
     color: #555;
@@ -338,11 +339,11 @@ footer {
     }
 
     .container-title {
-        font-size: 5vw;
+        font-size: 10vw;
     }
 
     .container-description {
-        font-size: 3.5vw;
+        font-size: 6vw;
     }
 
     .container-button {
@@ -565,31 +566,41 @@ footer {
 
 /* galeria de imágenes*/
 
-:root{
-    --index: calc(1vw + 1vh);
+:root {
+    --index: calc(0.8vw + 0.8vh); /* Reducimos el tamaño base */
     --transition: cubic-bezier(.1, .7, 0, 1);
 }
 
-.wrapper-gallery{
+.wrapper-gallery {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: 60vh; /* Ajustamos la altura para que las imágenes sean visibles */
+    overflow: hidden; /* Evitamos desbordamientos */
+    padding: 1rem 0;
 }
 
-.items{
+.gallery-container {
+    width: 100%;
+    overflow-x: auto; /* Agregamos scroll horizontal si es necesario */
+    white-space: nowrap; /* Evitamos que las imágenes salten de línea */
+    padding-bottom: 10px; /* Espacio para la barra de scroll */
+}
+
+.items {
     display: flex;
     gap: 0.4rem;
     perspective: calc(var(--index) * 35);
+    width: max-content; /* Asegura que el contenido tenga el tamaño necesario */
 }
 
 .item {
-    width: calc(var(--index) * 3);
-    height: calc(var(--index) * 12);
+    width: calc(var(--index) * 2.5); /* Se reduce el tamaño de los rectángulos */
+    height: calc(var(--index) * 10);
     background-color: #4B75BE33;
-    background-size: contain; /* Mostrar la imagen completa */
+    background-size: contain;
     background-position: center;
-    background-repeat: no-repeat; /* Evitar repeticiones */
+    background-repeat: no-repeat;
     cursor: pointer;
     filter: grayscale(1) brightness(.5);
     transition: transform 1.25s var(--transition),
@@ -598,93 +609,34 @@ footer {
     will-change: transform, filter, rotateY, width;
 }
 
-.items .item:active, 
-.items .item:focus {
-    width: 30vw; /* Asegurar que se expanda bien */
+/* Scroll estilizado */
+.gallery-container::-webkit-scrollbar {
+    height: 8px; /* Grosor de la barra de desplazamiento */
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+    background: rgba(75, 117, 190, 0.6); /* Color de la barra */
+    border-radius: 4px;
+}
+
+.gallery-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Ajustes al hacer hover o click */
+.items .item:hover {
     filter: inherit;
-    z-index: 100;
-    transform: translateZ(0) rotateY(0); /* Evita la perspectiva al ampliar */
-    margin: 0 .45vw;
-}
-
-
-.item::before, .item::after{
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 20px;
-    right: calc(var(--index) * -1);
-
-}
-
-.item::after{
-    left: calc(var(--index) * -1);
-}
-
-.items .item:hover{
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 10));
-}
-
-.items .item:hover + *{
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 8.5))
-    rotateY(35deg);
-    z-index: -1;
-}
-
-.items .item:hover + * + *{
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 5.6))
-    rotateY(40deg);
-    z-index: -2;
-}
-
-.items .item:hover + * + * + *{
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 2.5))
-    rotateY(30deg);
-    z-index: -3;
-}
-
-.items .item:hover + * + * + * + * + *{
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * .6)) 
-    rotateY(15deg);
-    z-index: -4;
-}
-
-.items .item:has(+ :hover){
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 8.5))
-    rotateY(-35deg);
-}
-
-.item .item:has(+ * + :hover){
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 5.6))
-    rotateY(-40deg);
-}
-
-.items .item:has(+ * + * + :hover){
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 2.5))
-    rotateY(-30deg);
-}
-
-.items .item:has(+ * + * + * + :hover){
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * .6))
-    rotateY(-15deg);
+    transform: translateZ(calc(var(--index) * 8));
 }
 
 .items .item:active, .items .item:focus {
-    width: 28vw;
+    width: 20vw;
     filter: inherit;
     z-index: 100;
     transform: translateZ(calc(var(--index) * 10));
     margin: 0 .45vw;
 }
+
 
 
 .btn-music{
