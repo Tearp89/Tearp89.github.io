@@ -16,6 +16,11 @@ p {
     font-size: 20px;
 }
 
+footer {
+    font-family: "GeneralFont", sans-serif;
+    font-size: 20px;
+}
+
 
 * {
     margin: 0;
@@ -29,7 +34,7 @@ html, body {
 }
   
 body {
-    height: 900vh;
+    height: 1200vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -597,7 +602,7 @@ footer {
     height: 100%;
     transform-origin: center;
     transform-style: preserve-3d;
-    transform: rotateY(calc(var(--i) * 45deg)) translateZ(380px);
+    transform: rotateY(calc(var(--i) * (360deg / 11))) translateZ(380px);
   }
   
   .gallery span img {
