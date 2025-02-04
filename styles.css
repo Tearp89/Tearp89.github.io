@@ -301,8 +301,8 @@ footer {
 }
 
 .container-description {
-    font-size: 10vw;
-    font-size: 18px; /* Límite máximo */
+    font-size: 15vw;
+    font-size: 22px; /* Límite máximo */
     line-height: 1.5;
     color: #555;
     margin-bottom: 20px;
